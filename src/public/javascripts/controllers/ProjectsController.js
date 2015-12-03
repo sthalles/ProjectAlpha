@@ -4,4 +4,5 @@
   app.controller('ProjectsController', function() {
 
   });
+
 })();

@@ -18,42 +18,21 @@
   <script src="/javascripts/bower_components/angular-animate/angular-animate.min.js"></script>
   <script src="/javascripts/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/javascripts/bower_components/angular-material-icons/angular-material-icons.js"></script>
-
+  
+  <script src="/javascripts/closure-library/closure/goog/base.js"></script>
+  
   <script type="text/javascript" src="/javascripts/index.js"></script>
   
-<!-- Load projects Angular Controller -->
+  <!-- Load projects Angular Controller -->
   <script type="text/javascript" src="/javascripts/controllers/ProjectsController.js"></script>
+  
 </head>
 
 <body ng-app="app-name">
   <div ng-controller="MainController as mainCtrl" layout="column" style="height:100%;" ng-cloak>
-    <md-toolbar ng-controller="ToolbarController as topbar">
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings">
-             <md-icon> menu </md-icon>
-        </md-button>
-        <h2>
-          <span>Toolbar with Icon Buttons</span>
-        </h2>
-        <span flex></span>
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon>more_vert</md-icon>
-        </md-button>
-      </div>
-      <span flex></span>
-      <md-tabs ng-show=false md-stretch-tabs="auto" md-center-tabs md-selected="data.selectedIndex">
-        <md-tab id="tab1">
-          <a href="#/view1"> View 1 </a>
-        </md-tab>
-        <md-tab id="tab2" aria-controls="tab2-content">
-          DOING
-        </md-tab>
-        <md-tab id="tab3" aria-controls="tab3-content">
-          DONE
-        </md-tab>
-      </md-tabs>
-    </md-toolbar>
-  
+    
+    <top-menu-bar></top-menu-bar>
+    
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
         <md-list>

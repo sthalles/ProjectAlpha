@@ -37,8 +37,12 @@
       }];
   });
 
-  app.controller('ToolbarController', function() {
 
+  app.directive('topMenuBar', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'angular_templates/top-menu-bar.html'
+    };
   });
 
 })();
