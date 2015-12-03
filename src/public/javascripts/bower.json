@@ -1,0 +1,27 @@
+{
+  "name": "javascripts",
+  "description": "Front-end packages for the project",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "Thalles Silva; Arthur Guerra"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-material": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
+    "angular-material-icons": "latest"
+  }
+}
