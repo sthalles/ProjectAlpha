@@ -4,11 +4,16 @@
   <title><%= title %></title>
 
   <link rel="stylesheet" href="/javascripts/bower_components/angular-material/angular-material.min.css">
-<!--    <link rel="stylesheet" href="/javascripts/bower_components/angular-material-icons/angular-material-icons.css">-->
-
-<!--    Google font-icons-->
+  
+  <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  
+<!--  Include the Materialize Collapsable widget -->
+<!--  <link rel="stylesheet" href="/javascripts/materialize-collapsible-master/css/materialize-collapsible.css">-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+<!--  <script src="/javascripts/materialize-collapsible-master/js/jquery.easing.1.3.js"></script>-->
+<!--  <script src="/javascripts/materialize-collapsible-master/js/collapsible.js"></script>-->
+  
   <script src="/javascripts/bower_components/angular/angular.min.js"></script>
   <script src="/javascripts/bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="/javascripts/bower_components/angular-route/angular-route.min.js"></script>
@@ -18,9 +23,7 @@
   <script src="/javascripts/bower_components/angular-animate/angular-animate.min.js"></script>
   <script src="/javascripts/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/javascripts/bower_components/angular-material-icons/angular-material-icons.js"></script>
-  
-  <script src="/javascripts/closure-library/closure/goog/base.js"></script>
-  
+    
   <script type="text/javascript" src="/javascripts/index.js"></script>
   
   <!-- Load projects Angular Controller -->
@@ -44,10 +47,9 @@
       </md-sidenav>
       
       <!-- Display different pages -->
-      <div ng-view flex layout-padding>
-        
-      </div>
+      <div flex ng-view layout="row" layout-xs="column">
 
+      </div>
     </section>
   </div>
 </body>

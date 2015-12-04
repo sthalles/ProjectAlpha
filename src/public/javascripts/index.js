@@ -9,7 +9,7 @@
         .when('/projects', {
           templateUrl: 'projects/projects.html',
           controller: 'ProjectsController',
-          controllerAs: 'projctrl'
+          controllerAs: 'projCtrl'
         });
   });
 
