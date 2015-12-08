@@ -3,10 +3,10 @@
 <head>
   <title><%= title %></title>
 
-  <link rel="stylesheet" href="/javascripts/bower_components/angular-material/angular-material.min.css">
-  
-  <!--Import Google Icon Font-->
+    <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/javascripts/bower_components/angular-material/angular-material.css">
   
 <!--  Include the Materialize Collapsable widget -->
 <!--  <link rel="stylesheet" href="/javascripts/materialize-collapsible-master/css/materialize-collapsible.css">-->
@@ -15,41 +15,56 @@
 <!--  <script src="/javascripts/materialize-collapsible-master/js/collapsible.js"></script>-->
   
   <script src="/javascripts/bower_components/angular/angular.min.js"></script>
+  <script src="/javascripts/bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="/javascripts/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/javascripts/bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="/javascripts/bower_components/angular-route/angular-route.min.js"></script>
 
   <!-- Angular Material dependencies-->
   <script src="/javascripts/bower_components/angular-material/angular-material.min.js"></script>
-  <script src="/javascripts/bower_components/angular-animate/angular-animate.min.js"></script>
-  <script src="/javascripts/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/javascripts/bower_components/angular-material-icons/angular-material-icons.js"></script>
     
   <script type="text/javascript" src="/javascripts/index.js"></script>
   
-  <!-- Load projects Angular Controller -->
-  <script type="text/javascript" src="/javascripts/controllers/ProjectsController.js"></script>
+  <!-- Load projects Angular Modules -->
+  <script type="text/javascript" src="/javascripts/controllers/project-controller.js"></script>
+  <script type="text/javascript" src="/javascripts/controllers/app-controller.js"></script>
+  <script type="text/javascript" src="/javascripts/controllers/sprint-controller.js"></script>
+  
+  <!-- load the custom resource services -->
+  <script type="text/javascript" src="/javascripts/services/project-service.js"></script>
+  <script type="text/javascript" src="/javascripts/services/sprint-service.js"></script>
+  
+  <!-- Load custom directives -->
+  <script type="text/javascript" src="/javascripts/directives/directives.js"></script>
   
 </head>
 
-<body ng-app="app-name">
-  <div ng-controller="MainController as mainCtrl" layout="column" style="height:100%;" ng-cloak>
+<body ng-app="app">
+  <div layout="column" style="height:100%;" ng-cloak>
+    
+    
+    <md-button ng-controller="AddButtonController as addBtnCtrl" class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="showAdd($event)">
+      <md-icon aria-label="Plus"> add </md-icon>
+    </md-button>
     
     <top-menu-bar></top-menu-bar>
     
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-        <md-list>
-          <md-list-item ng-repeat="item in menu" ng-click="loadPage(item.link)">
-            <md-icon> {{item.icon}} </md-icon>
-            <p>{{ item.title }}</p>
-          </md-list-item>
-        </md-list>
+        <md-content layout-padding ng-controller="LeftSideNaveController">
+          <md-list>
+            <md-list-item ng-repeat="item in menu" ng-click="loadPage(item.link)">
+              <md-icon> {{item.icon}} </md-icon>
+              <p>{{ item.title }}</p>
+            </md-list-item>
+          </md-list>
+        </md-content>
       </md-sidenav>
       
-      <!-- Display different pages -->
-      <div flex ng-view layout="row" layout-xs="column">
-
-      </div>
+      <md-content flex layout-padding ng-view>
+      </md-content>
+      
     </section>
   </div>
 </body>
