@@ -16,6 +16,6 @@
      *                  in the 'Return' section.
      */
         function($resource) {
-          return $resource('/api/projects/:id');
+          return $resource('/projects/:id');
         }]);
 })();
