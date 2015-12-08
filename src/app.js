@@ -6,14 +6,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // load the database scheme modules
-require('./models/models.js')
+require('./models/models.js');
 
 // load mongodb midlleware module
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mantisdb');             // connects to Mongodb
+mongoose.connect('mongodb://localhost/mantisdb'); // connects to Mongodb
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./api/users');
+var projects = require('./api/projects');
+var sprints = require('./api/sprints');
+var stories = require('./api/stories');
+var tasks = require('./api/tasks');
 
 var app = express();
 
@@ -32,6 +36,10 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/projects', projects);
+app.use('/sprints', sprints);
+app.use('/stories', stories);
+app.use('/tasks', tasks);
 
 
 // catch 404 and forward to error handler
@@ -66,4 +74,7 @@ app.use(function(err, req, res, next) {
 });
 
 
+/**
+ * Exporting app
+ */
 module.exports = app;
