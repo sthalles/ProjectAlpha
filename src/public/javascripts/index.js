@@ -18,7 +18,7 @@
           controllerAs: 'projCtrl'
         })
         .when('/projects/:id', { // defines a route parameter for projects
-          templateUrl: 'sprints/sprints.html',
+          templateUrl: 'pages/sprints/sprints.html',
           controller: 'ShowSprintsController',
           controllerAs: 'sprintCtrl'
         })
