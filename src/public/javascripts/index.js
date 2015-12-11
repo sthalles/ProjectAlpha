@@ -6,6 +6,8 @@
        'app.project',
        'app.services',
        'app.sprint',
+       'app.story',
+       'app.task',
        'app.directives']);
 
   angular.module('app').config(function($routeProvider) {
@@ -19,8 +21,18 @@
         })
         .when('/projects/:id', { // defines a route parameter for projects
           templateUrl: 'pages/sprints/sprints.html',
-          controller: 'ShowSprintsController',
+          controller: 'SprintsController',
           controllerAs: 'sprintCtrl'
+        })
+        .when('/sprints/:id', { // defines a route parameter for sprints
+          templateUrl: 'pages/stories/stories.html',
+          controller: 'StoriesController',
+          controllerAs: 'storyCtrl'
+        })
+        .when('/stories/:id', { // defines a route parameter for sprints
+          templateUrl: 'pages/tasks/tasks.html',
+          controller: 'TasksController',
+          controllerAs: 'TaskCtrl'
         })
         .when('/', { // if no other route definition is matched
           redirectTo: '/projects'

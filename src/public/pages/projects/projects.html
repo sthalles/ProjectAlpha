@@ -7,14 +7,15 @@
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{project.name}}</span>
-            <span class="md-subhead">Small</span>
+            <span class="md-subhead">{{project.description}}</span>
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-sm card-media"></div>
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Sprints</md-button>
+<!--          <md-button ng-click="getSprints(project._id)">Sprints</md-button>-->
+          <a ng-href="#/projects/{{project._id}}">Sprints</a>
           <md-button>Settings</md-button>
         </md-card-actions>
       </md-card>

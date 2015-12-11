@@ -39,7 +39,7 @@
         $scope.menu = [
           {
             link: '/projects',
-            title: 'Projectss',
+            title: 'Projects',
             icon: 'menu'
           },
           {
