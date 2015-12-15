@@ -12,7 +12,7 @@
            * @param {object} project Clicked project
            */
           $scope.getSprints = function(project) {
-            var sprintPage = '/sprints/' + project._id;
+            var sprintPage = 'project/sprints/' + project._id;
             $location.path(sprintPage);
           };
         }]);

@@ -26,7 +26,7 @@
           controller: '',
           controllerAs: ''
         })
-        .when('/sprints/:id', { // defines a route parameter for sprints
+        .when('/project/sprints/:id', { // defines a route parameter for sprints
           templateUrl: 'pages/sprints/sprints.html',
           controller: 'SprintsController',
           controllerAs: 'sprintCtrl'
