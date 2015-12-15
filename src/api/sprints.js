@@ -22,25 +22,25 @@ router.route('/')
 
     // store a new story
     .post(function(req, res) {
-      Project.findById(req.body.projectId, function(err, project) {
-        var sprint = new Sprint({
-          name: req.body.name,
-          description: req.body.description,
-          _creator: project._id
-        });
-
-        sprint.save(function(err, sprint) {
-          if (err) {
-            return res.send(500, err);
-          }
-        });
-
-        project.sprints.push(sprint);
-        project.save(function(err, project) {
-          if (err) return res.send({error: err});
-          return res.send(sprint);
-        });
+      //Project.findById(req.body.projectId, function(err, project) {
+      var sprint = new Sprint({
+        name: req.body.name,
+        description: req.body.description,
+        //_creator: project._id
       });
+
+      sprint.save(function(err, sprint) {
+        if (err) {
+          return res.send(500, err);
+        }
+      });
+
+      //project.sprints.push(sprint);
+      //project.save(function(err, project) {
+      //  if (err) return res.send({error: err});
+      return res.send(sprint);
+      //});
+      //});
     });
 
 // Specific tasks

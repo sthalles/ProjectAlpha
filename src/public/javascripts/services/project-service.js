@@ -16,6 +16,8 @@
          *                  in the 'Return' section.
          */
         function($resource) {
-          return $resource('/projects/:id');
+          return $resource('/projects/:id', {}, {
+            query: {method: 'GET', params: {id: '@id'}, isArray: true}
+          });
         }]);
 })();

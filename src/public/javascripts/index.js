@@ -11,23 +11,25 @@
        'app.directives']);
 
   angular.module('app').config(function($routeProvider) {
+    // adds a new route definition to the $routeProvider service
     $routeProvider
         // when the user is at root (/) assign the
         // mainController as the default controller
-        .when('/projects', { // adds a new route definition to the $routeProvider service
+        .when('/projects', {
           templateUrl: 'pages/projects/projects.html',
           controller: 'ProjectsController',
           controllerAs: 'projCtrl'
         })
+        // TODO: handle request to an specific project
         .when('/projects/:id', { // defines a route parameter for projects
+          templateUrl: '',
+          controller: '',
+          controllerAs: ''
+        })
+        .when('/sprints/:id', { // defines a route parameter for sprints
           templateUrl: 'pages/sprints/sprints.html',
           controller: 'SprintsController',
           controllerAs: 'sprintCtrl'
-        })
-        .when('/sprints/:id', { // defines a route parameter for sprints
-          templateUrl: 'pages/stories/stories.html',
-          controller: 'StoriesController',
-          controllerAs: 'storyCtrl'
         })
         .when('/stories/:id', { // defines a route parameter for sprints
           templateUrl: 'pages/tasks/tasks.html',

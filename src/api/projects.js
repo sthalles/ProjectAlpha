@@ -22,24 +22,24 @@ router.route('/')
 
     // store a new project
     .post(function(req, res) {
-      User.findById(req.body.userId, function(err, user) {
-        if (err) return res.send({error: err});
+      //User.findById(req.body.userId, function(err, user) {
+      //  if (err) return res.send({error: err});
 
-        var project = new Project();
-        project.name = req.body.name;
-        project.description = req.body.description;
-        project._creator = user._id;
+      var project = new Project();
+      project.name = req.body.name;
+      project.description = req.body.description;
+      // project._creator = user._id;
 
-        project.save(function(err, project) {
-          if (err) return res.send(500, err);
-        });
-
-        user.projects.push(project);
-        user.save(function(err, user) {
-          if (err) return res.send({error: err});
-          return res.send(project);
-        });
+      project.save(function(err, project) {
+        if (err) return res.send(500, 'err');
       });
+
+      //user.projects.push(project);
+      //user.save(function(err, user) {
+      //  if (err) return res.send({error: err});
+      return res.send(project);
+      //});
+      //});
     });
 
 // Specific projects
