@@ -1,0 +1,16 @@
+<!--<p> Project id: {{sprintCtrl.projectId}} </p>-->
+
+<ul class="collapsible popout" data-collapsible="accordion">
+  <li ng-repeat="story in stories">
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i> {{story.name}}</div>
+    <div class="collapsible-body">
+      <p>
+        {{story.description}}
+        
+      </p>
+      <p>
+        <a ng-href="#/stories/{{story._id}}">Tasks</a>  
+      </p>
+    </div>
+  </li>
+</ul>
