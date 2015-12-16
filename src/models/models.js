@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.Types.ObjectId;
 
 var userSchema = new mongoose.Schema({
-  name: {type: String, required: true},
+  username: {type: String, required: true},
+  password: {type: String, required: true},
   created_at: {type: Date, default: Date.now},
   projects: [{type: ObjectId, ref: 'Project'}]
 });

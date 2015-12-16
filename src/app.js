@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
 
 // load the database scheme modules
 require('./models/models.js');
@@ -18,6 +20,7 @@ var projects = require('./api/projects');
 var sprints = require('./api/sprints');
 var stories = require('./api/stories');
 var tasks = require('./api/tasks');
+var authenticate = require('./api/authenticate')(passport);
 
 var app = express();
 
@@ -28,10 +31,24 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+
+app.use(session({
+  // The session manager uses a secret to maintain sessions. In practice,
+  // you should keep this secret value outside of your code repository
+  // in an environment variable.
+  secret: 'keyboard cat'
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Initialize Passport
+var initPassport = require('./passport-init');
+initPassport(passport);
 
 app.use('/', routes);
 app.use('/users', users);
@@ -39,7 +56,7 @@ app.use('/projects', projects);
 app.use('/sprints', sprints);
 app.use('/stories', stories);
 app.use('/tasks', tasks);
-
+app.use('/auth', authenticate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
