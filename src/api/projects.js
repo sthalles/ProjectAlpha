@@ -3,7 +3,6 @@
  * It responds to requests under /projects
  */
 var express = require('express');
-var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Project = mongoose.model('Project');

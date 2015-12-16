@@ -7,12 +7,11 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 
-// load the database scheme modules
+// initialize mongoose schemas
 require('./models/models.js');
 
-// load mongodb midlleware module
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mantisdb'); // connects to Mongodb
+// load the auth-blocker middleware
+var midBlocker = require('./middleware/auth-blocker');
 
 var routes = require('./routes/index');
 var users = require('./api/users');
@@ -21,6 +20,10 @@ var sprints = require('./api/sprints');
 var stories = require('./api/stories');
 var tasks = require('./api/tasks');
 var authenticate = require('./api/authenticate')(passport);
+
+// load mongodb midlleware module
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/mantisdb'); // connects to Mongodb
 
 var app = express();
 
@@ -46,17 +49,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Initialize Passport
-var initPassport = require('./passport-init');
-initPassport(passport);
-
+// the auth API must be used before the data APIs;
+app.use('/auth', authenticate);
 app.use('/', routes);
+
+// this middleware must be here, after routes and before the apis
+app.use('/', midBlocker);
+
 app.use('/users', users);
 app.use('/projects', projects);
 app.use('/sprints', sprints);
 app.use('/stories', stories);
 app.use('/tasks', tasks);
-app.use('/auth', authenticate);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -65,8 +70,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+// Initialize Passport
+var initPassport = require('./passport-init');
+initPassport(passport);
 
+// error handlers
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {

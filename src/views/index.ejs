@@ -55,7 +55,8 @@
     <top-menu-bar></top-menu-bar>
     
     <section layout="row" flex>
-      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <md-sidenav ng-show="authenticated" <!-- Only show the sidebar when the user is authenticated -->
+                  class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
         <md-content layout-padding ng-controller="LeftSideNaveController">
           <md-list>
             <md-list-item ng-repeat="item in menu" ng-click="loadPage(item.link)">

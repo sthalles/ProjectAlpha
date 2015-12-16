@@ -10,6 +10,11 @@
     <md-button class="md-icon-button" aria-label="More">
       <md-icon>more_vert</md-icon>
     </md-button>
+
+    <md-button class="md-raised"  aria-label="Logout" ng-show="authenticated" ng-click="signout()">
+      Logout
+    </md-button>
+    
   </div>
   <span flex></span>
   <md-tabs ng-show=false md-stretch-tabs="auto" md-center-tabs md-selected="data.selectedIndex">
