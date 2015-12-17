@@ -4,7 +4,12 @@
   angular.module('app.project')
       .controller('ProjectsController', ['$scope', 'Project', '$location',
         function($scope, Project, $location) {
-          $scope.projects = Project.query();
+          $scope.projects = Project.query(
+              function(data) { /* on success */ },
+              function(error) {
+                // error handler function
+                $location.path(error.data.redirect);
+              });
 
 
           /**Get the selected project and redirects the user to the

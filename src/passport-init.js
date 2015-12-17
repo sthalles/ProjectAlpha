@@ -52,10 +52,12 @@ module.exports = function(passport) {
   }
   ));
 
+
   passport.use('signup', new LocalStrategy({
     passReqToCallback: true // allows us to pass back the entire request to the callback
   },
   function(req, username, password, done) {
+
     // find a user in mongo with provided username
     User.findOne({ 'username' : username }, function(err, user) {
       // In case of any error, return using the done method
@@ -78,10 +80,10 @@ module.exports = function(passport) {
         // save the user
         newUser.save(function(err) {
           if (err) {
-                console.log('Error in Saving user: ' + err);
-                return done(null, false);
+            console.log('Error in Saving user: ' + err);
+            throw err;
           }
-          console.log(newUser.username + ' Registration successful');
+          console.log(newUser.username + ' Registration succesful');
           return done(null, newUser);
         });
       }
