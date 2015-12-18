@@ -7,14 +7,13 @@
  * @param {object} next   function to call the next middleware in the stack
  */
 module.exports = function(request, response, next) {
-  // if user is authenticated in the session, call the next() to call the next request handler
-  // Passport adds this method to request object. A middleware is allowed to add properties to
-  // request and response objects
+  // if user is authenticated in the session, call the next() to call the next request handler;
+  //  Passport adds this method to request object. A middleware is allowed to add properties to;
+  //  request and response objects;
   if (request.isAuthenticated()) {
+    console.log('--- User Authenticated ---');
     return next();
   }
-
-  console.log('Api Blocker\n');
 
   // if the user is not authenticated then redirect him to the login page
   return response.status(300).send({redirect: '/login'});

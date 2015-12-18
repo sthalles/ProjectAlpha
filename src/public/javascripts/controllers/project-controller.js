@@ -7,6 +7,7 @@
           $scope.projects = Project.query(
               function(data) { /* on success */ },
               function(error) {
+                debugger;
                 // error handler function
                 $location.path(error.data.redirect);
               });

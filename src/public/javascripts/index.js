@@ -86,7 +86,7 @@
               console.log('Action: Logged in!');
               $rootScope.authenticated = true;
               $rootScope.current_user = data.user.username;
-              $location.path('/');
+              $location.path('/projects');
             }
             else {
               $scope.error_message = data.message;
