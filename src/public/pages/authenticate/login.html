@@ -4,12 +4,12 @@
         <md-input-container class="md-icon-float md-block">
           <!-- Use floating placeholder instead of label -->
           <md-icon class="username">person</md-icon>
-          <input ng-model="user.username" type="name" placeholder="Username" ng-required="true">
+          <input type="username" ng-model="user.username" placeholder="Username" class="form-auth" ng-required="true">
         </md-input-container>
         <md-input-container class="md-icon-float md-block">
           <!-- Use floating label instead of placeholder -->
           <md-icon class="password">https</md-icon>
-          <input ng-model="user.password" type="password" placeholder="Password" ng-required="true">
+          <input type="password" ng-model="user.password" placeholder="Password" class="form-auth" ng-required="true">
         </md-input-container>
         <input type="submit" value="Log in" class="btn btn-primary"/>
       </div>

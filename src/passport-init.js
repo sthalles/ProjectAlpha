@@ -17,8 +17,6 @@ module.exports = function(passport) {
   //Desieralize user will call with the unique id provided by serializeuser
   passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
-      if (err) return done(err, false);
-
       console.log('deserializing user:', user.username);
       done(err, user);
     });
@@ -28,6 +26,8 @@ module.exports = function(passport) {
     passReqToCallback: true
   },
   function(req, username, password, done) {
+    console.log('Logging in as: ' + username);
+
     // check in mongo if a user with username exists or not
     User.findOne({ 'username' : username },
         function(err, user) {

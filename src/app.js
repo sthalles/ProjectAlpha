@@ -39,7 +39,10 @@ app.use(session({
   // The session manager uses a secret to maintain sessions. In practice,
   // you should keep this secret value outside of your code repository
   // in an environment variable.
-  secret: 'keyboard cat'
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+
 }));
 
 app.use(bodyParser.json());
